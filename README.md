@@ -1,4 +1,4 @@
-# Passowrd Generator 
+# Passoword Generator 
 
 ## Key Features
 
