@@ -1,3 +1,7 @@
+# Passowrd Generator 
+
+## Key Features
+
 [+]When clicking the button to generate a password, you're presented with a series of prompts for password criteria
 
 [+]When prompted for password criteria, then select which criteria to include in the password
@@ -14,4 +18,4 @@
 
 ![Screenshot](screenshot/pgss.PNG)
 
-Link to deployed site https://michaeldigi.github.io/password-gen/
+### Link to deployed site https://michaeldigi.github.io/password-gen/
