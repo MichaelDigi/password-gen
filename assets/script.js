@@ -82,10 +82,9 @@ generateBtn.addEventListener("click", writePassword);
 function generatePassword() {
   passwordLength = prompt("Choose password length 8-128");
   console.log(passwordLength);
-  if (!passwordLength) {
-    alert("No value entered");
-  } else if (passwordLength < 8 || passwordLength > 128) {
-    passwordLength = prompt("Must enter a value between set range 8-128");
+  if (passwordLength < 8 || passwordLength > 128 || !passwordLength) {
+    alert("Must enter a value between set range 8-128");
+    return;
   } else {
     confirmUpper = confirm("Do you want to use uppercase characters?");
     confirmLower = confirm("Do you want to use lowercase characters?");
@@ -93,78 +92,36 @@ function generatePassword() {
     confirmNumbers = confirm("Do you want to use Numbers?");
   }
 
-  if (!(confirmUpper && confirmLower && confirmSpecial && confirmNumbers)) {
+  if (!confirmUpper && !confirmLower && !confirmSpecial && !confirmNumbers) {
     alert("please select one of the options");
+    return;
   }
-
-  if (confirmLower) {
-    characters = charsLower;
-    console.log(characters);
-  }
-
-  if (confirmUpper) {
-    characters = charsUpper;
-  }
-
-  if (confirmNumbers) {
-    characters = charsNumbers;
-  }
-
-  if (confirmSpecial) {
-    characters = charsSpecial;
-  }
-
-  if (confirmUpper && confirmLower) {
-    characters = charsLower.concat(charsUpper);
-  }
-
-  if (confirmNumbers && confirmLower) {
-    characters = charsLower.concat(charsNumbers);
-  }
-
-  if (confirmUpper && confirmNumbers) {
-    characters = charsNumbers.concat(charsUpper);
-  }
-
-  if (confirmSpecial && confirmLower) {
-    characters = charsLower.concat(charsSpecial);
-  }
-
-  if (confirmUpper && confirmSpecial) {
-    characters = charsSpecial.concat(charsUpper);
-  }
-
-  if (confirmNumbers && confirmSpecial) {
-    characters = charsSpecial.concat(charsNumbers);
-  }
-
-  if (confirmLower && confirmUpper && confirmNumbers) {
-    characters = charsLower.concat(charsUpper, charsNumbers);
-  }
-
-  if (confirmLower && confirmUpper && confirmSpecial) {
-    characters = charsLower.concat(charsUpper, charsSpecial);
-  }
-
-  if (confirmLower && confirmNumbers && confirmSpecial) {
-    characters = charsLower.concat(charsNumbers, charsSpecial);
-  }
-
-  if (confirmUpper && confirmNumbers && confirmSpecial) {
-    characters = charsUpper.concat(charsNumbers, charsSpecial);
-  }
-
-  if (confirmUpper && confirmNumbers && confirmSpecial && charsLower) {
-    characters = charsUpper.concat(charsNumbers, charsSpecial, charsLower);
-    console.log(characters);
-  }
-
   let generatedpassword = [];
-
+  if (confirmUpper) {
+    characters = characters.concat(charsUpper);
+    // let element = charsUpper[Math.floor(Math.random() * charsUpper.length)];
+    // generatedpassword.push(element);
+  }
+  console.log(characters);
+  if (confirmLower) {
+    characters = characters.concat(charsLower);
+  }
+  console.log(characters);
+  if (confirmSpecial) {
+    characters = characters.concat(charsSpecial);
+  }
+  console.log(characters);
+  if (confirmNumbers) {
+    characters = characters.concat(charsNumbers);
+  }
+  console.log(characters);
+  
   for (let i = 0; i < passwordLength; i++) {
     let element = characters[Math.floor(Math.random() * characters.length)];
     generatedpassword.push(element);
   }
+  
   var displayedpasssword = generatedpassword.join("");
+  
   return displayedpasssword;
 }
